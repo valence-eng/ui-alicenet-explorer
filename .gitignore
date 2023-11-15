@@ -12,8 +12,9 @@
 # next.js
 /.next/
 /out/
-/public/assets/
 /public/envs.js
+# Hide generated network icons
+/public/assets/network*
 
 # production
 /build

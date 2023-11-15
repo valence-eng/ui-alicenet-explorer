@@ -1,4 +1,5 @@
 const colors = {
+
   green: {
     '100': '#C6F6D5',
     '400': '#48BB78',
@@ -36,7 +37,7 @@ const colors = {
     '800': '#1A202C',
     '900': '#171923',
   },
-  black: '#101112',
+  black: '#11151C', // - Changed to alicenet dark in lieu of figuring out component prop drill for bg
   white: '#ffffff',
   blackAlpha: {
     '50': 'RGBA(16, 17, 18, 0.04)',

@@ -52,20 +52,20 @@ const NetworkLogo = ({ isCollapsed, onClick }: Props) => {
   return (
     // TODO switch to <NextLink href={ href } passHref> when main page for network will be ready
     <Box
+      mt="8"
       as="a"
       href={ route({ pathname: '/' }) }
       width={{ base: 'auto', lg: isCollapsed === false ? '120px' : '30px', xl: isCollapsed ? '30px' : '120px' }}
       height={{ base: '24px', lg: isCollapsed === false ? '24px' : '30px', xl: isCollapsed ? '30px' : '24px' }}
-      display="inline-flex"
-      overflow="hidden"
+      display="block"
       onClick={ onClick }
       flexShrink={ 0 }
       aria-label="Link to main page"
     >
       { /* big logo */ }
       <Image
-        w="auto"
-        h="100%"
+        w="100%"
+        h="auto"
         src={ logoSrc }
         alt={ `${ config.chain.name } network logo` }
         fallback={ <LogoFallback isCollapsed={ isCollapsed }/> }
@@ -74,8 +74,9 @@ const NetworkLogo = ({ isCollapsed, onClick }: Props) => {
       />
       { /* small logo */ }
       <Image
-        w="auto"
-        h="100%"
+        w="100%"
+        h="auto%"
+        mt="3px"
         src={ iconSrc }
         alt={ `${ config.chain.name } network logo` }
         fallback={ <LogoFallback isCollapsed={ isCollapsed } isSmall/> }

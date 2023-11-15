@@ -1,5 +1,5 @@
 import type { SystemStyleObject, TooltipProps } from '@chakra-ui/react';
-import { Skeleton, Flex, useColorModeValue, chakra, LightMode } from '@chakra-ui/react';
+import { Skeleton, Flex, useColorModeValue, chakra, LightMode, useTheme } from '@chakra-ui/react';
 import React from 'react';
 
 import breakpoints from 'theme/foundations/breakpoints';
@@ -27,6 +27,9 @@ const TOOLTIP_PROPS: Partial<TooltipProps> = {
 };
 
 const StatsItem = ({ icon, title, value, className, tooltipLabel, url, isLoading }: Props) => {
+
+  const theme = useTheme();
+
   const sxContainer: SystemStyleObject = {
     [`@media screen and (min-width: ${ breakpoints.lg }) and (max-width: ${ LARGEST_BREAKPOINT })`]: { flexDirection: 'column' },
   };
@@ -35,7 +38,7 @@ const StatsItem = ({ icon, title, value, className, tooltipLabel, url, isLoading
     [`@media screen and (min-width: ${ breakpoints.lg }) and (max-width: ${ LARGEST_BREAKPOINT })`]: { alignItems: 'center' },
   };
 
-  const bgColor = useColorModeValue('blue.50', 'blue.800');
+  const bgColor = useColorModeValue('blue.50', theme.palette.extra.modalBgDark50);
   const loadingBgColor = useColorModeValue('blackAlpha.50', 'whiteAlpha.50');
   const infoColor = useColorModeValue('gray.600', 'gray.400');
 

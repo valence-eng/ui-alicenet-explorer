@@ -1,4 +1,4 @@
-import { Flex, Skeleton, Text, useColorModeValue } from '@chakra-ui/react';
+import { Flex, Skeleton, Text, useColorModeValue, useTheme } from '@chakra-ui/react';
 import React from 'react';
 
 import config from 'configs/app';
@@ -28,10 +28,12 @@ const ChainIndicators = () => {
   const [ selectedIndicator, selectIndicator ] = React.useState(indicators[0]?.id);
   const indicator = indicators.find(({ id }) => id === selectedIndicator);
 
+  const theme = useTheme();
+
   const queryResult = useFetchChartData(indicator);
   const statsQueryResult = useApiQuery('homepage_stats');
 
-  const bgColorDesktop = useColorModeValue('white', 'gray.900');
+  const bgColorDesktop = useColorModeValue('white', theme.palette.extra.modalBgDark);
   const bgColorMobile = useColorModeValue('white', 'black');
   const listBgColorDesktop = useColorModeValue('gray.50', 'black');
   const listBgColorMobile = useColorModeValue('gray.50', 'gray.900');

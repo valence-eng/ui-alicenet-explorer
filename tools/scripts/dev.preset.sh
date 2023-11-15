@@ -27,7 +27,7 @@ dotenv \
 # generate envs.js file and run the app
 dotenv \
   -v NEXT_PUBLIC_GIT_COMMIT_SHA=$(git rev-parse --short HEAD) \
-  -v NEXT_PUBLIC_GIT_TAG=$(git describe --tags --abbrev=0) \
+  -v NEXT_PUBLIC_GIT_TAG="AliceNet" \
   -e $config_file \
   -e $secrets_file \
   -- bash -c './deploy/scripts/make_envs_script.sh && next dev -- -p $NEXT_PUBLIC_APP_PORT' |

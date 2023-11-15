@@ -1,5 +1,6 @@
 const withRoutes = require('nextjs-routes/config')({
   outDir: 'nextjs',
+
 });
 
 const headers = require('./nextjs/headers');
