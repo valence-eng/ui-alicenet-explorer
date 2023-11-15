@@ -1,7 +1,7 @@
 import { type ThemeConfig } from '@chakra-ui/react';
 
 const config: ThemeConfig = {
-  initialColorMode: 'system',
+  initialColorMode: 'dark', // TODO update when light available
   useSystemColorMode: false,
   disableTransitionOnChange: false,
 };

@@ -1,34 +1,28 @@
-<h1 align="center">Blockscout frontend</h1>
+<h1 align="center">Alicenet Explorer Frontend</h1>
 
-<p align="center">
-    <span>Frontend application for </span>
-    <a href="https://github.com/blockscout/blockscout/blob/master/README.md">Blockscout</a>
-    <span> blockchain explorer</span>
-</p>
+## Running and developing the application
 
-## Running and configuring the app
+The explorer is forked from [Blockscout](https://github.com/blockscout/frontend/pkgs/container/frontend)
 
-App is distributed as a docker image. Here you can find information about the [package](https://github.com/blockscout/frontend/pkgs/container/frontend) and its recent [releases](https://github.com/blockscout/frontend/releases).
+Please see included environment file for AliceNet included in `/configs/envs/.env.remotealice`
 
-You can configure your app by passing necessary environment variables when stating the container. See full list of ENVs and their description [here](./docs/ENVS.md).
+For local development use: `yarn` and then `yarn dev`
 
-```sh
-docker run -p 3000:3000 --env-file <path-to-your-env-file> ghcr.io/blockscout/frontend:latest
-```
+For deploying, an image can be built and served as a container using docker
 
-Alternatively, you can build your own docker image and run your app from that. Please follow this [guide](./docs/CUSTOM_BUILD.md).
+### Building docker image
 
-For more information on migrating from the previous frontend, please see the [frontend migration docs](https://docs.blockscout.com/for-developers/frontend-migration).
+A deployable build can be made with:
 
-## Contributing
+`docker build -t alicenet-explorer-ui .`
 
-See our [Contribution guide](./docs/CONTRIBUTING.md) for pull request protocol. We expect contributors to follow our [code of conduct](./CODE_OF_CONDUCT.md) when submitting code or comments.
+Note that `yarn build` must pass or a docker build *will* fail.
 
-## Resources
-- [App ENVs list](./docs/ENVS.md)
-- [Contribution guide](./docs/CONTRIBUTING.md)
-- [Making a custom build](./docs/CUSTOM_BUILD.md)
-- [Frontend migration guide](https://docs.blockscout.com/for-developers/frontend-migration)
+### Running from built image
+
+After buidling the image it can be ran:
+
+```docker run -p 3000:3000 --env-file ./configs/envs/.env.remotealice alicenet-explorer-ui```
 
 ## License
 

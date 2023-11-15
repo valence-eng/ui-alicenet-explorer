@@ -54,7 +54,7 @@ const SocketNewItemsNotice = chakra(({ children, className, url, num, alert, typ
   })();
 
   const color = useColorModeValue('blackAlpha.800', 'whiteAlpha.800');
-  const bgColor = useColorModeValue('orange.50', transparentize('orange.200', 0.16)(theme));
+  const bgColor = useColorModeValue('blue.50', transparentize('blue.200', 0.16)(theme));
 
   const content = !isLoading ? (
     <Alert
@@ -62,6 +62,7 @@ const SocketNewItemsNotice = chakra(({ children, className, url, num, alert, typ
       status="warning"
       px={ 4 }
       py="6px"
+      borderRadius={ 4 }
       fontWeight={ 400 }
       fontSize="sm"
       lineHeight={ 5 }

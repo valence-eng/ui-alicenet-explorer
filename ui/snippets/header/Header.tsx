@@ -1,4 +1,4 @@
-import { HStack, Box, Flex, useColorModeValue } from '@chakra-ui/react';
+import { HStack, Box, Flex, useColorModeValue, LightMode } from '@chakra-ui/react';
 import React from 'react';
 
 import config from 'configs/app';
@@ -44,7 +44,11 @@ const Header = ({ isHomePage, renderSearchBar }: Props) => {
           <NetworkLogo/>
           { config.features.account.isEnabled ? <ProfileMenuMobile/> : <Box boxSize={ 10 }/> }
         </Flex>
-        { !isHomePage && searchBar }
+        { !isHomePage && (
+          <LightMode>
+            { searchBar }
+          </LightMode>
+        ) }
       </Box>
       <Box display={{ base: 'none', lg: 'block' }}>
         { !isHomePage && (
@@ -56,7 +60,9 @@ const Header = ({ isHomePage, renderSearchBar }: Props) => {
             gap={ 12 }
           >
             <Box width="100%">
-              { searchBar }
+              <LightMode>
+                { searchBar }
+              </LightMode>
             </Box>
             { config.features.account.isEnabled && <ProfileMenuDesktop/> }
           </HStack>

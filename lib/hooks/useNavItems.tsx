@@ -12,14 +12,14 @@ import depositsIcon from 'icons/arrows/south-east.svg';
 import blocksIcon from 'icons/block.svg';
 import gearIcon from 'icons/gear.svg';
 import globeIcon from 'icons/globe-b.svg';
-import graphQLIcon from 'icons/graphQL.svg';
+// import graphQLIcon from 'icons/graphQL.svg';
 import outputRootsIcon from 'icons/output_roots.svg';
 import privateTagIcon from 'icons/privattags.svg';
 import publicTagIcon from 'icons/publictags.svg';
-import apiDocsIcon from 'icons/restAPI.svg';
-import rpcIcon from 'icons/RPC.svg';
-import statsIcon from 'icons/stats.svg';
-import tokensIcon from 'icons/token.svg';
+// import apiDocsIcon from 'icons/restAPI.svg';
+// import rpcIcon from 'icons/RPC.svg';
+// import statsIcon from 'icons/stats.svg';
+// import tokensIcon from 'icons/token.svg';
 import topAccountsIcon from 'icons/top-accounts.svg';
 import transactionsIcon from 'icons/transactions.svg';
 import txnBatchIcon from 'icons/txn_batches.svg';
@@ -120,6 +120,7 @@ export default function useNavItems(): ReturnType {
       ].filter(Boolean);
     }
 
+    /*
     const apiNavItems: Array<NavItem> = [
       config.features.restApiDocs.isEnabled ? {
         text: 'REST API',
@@ -144,6 +145,7 @@ export default function useNavItems(): ReturnType {
         url: ' https://docs.blockscout.com/for-users/api/eth-rpc',
       },
     ].filter(Boolean);
+    */
 
     const mainNavItems: ReturnType['mainNavItems'] = [
       {
@@ -152,30 +154,40 @@ export default function useNavItems(): ReturnType {
         isActive: blockchainNavItems.flat().some(item => isInternalItem(item) && item.isActive),
         subItems: blockchainNavItems,
       },
+
+      /* TODO: Hidden until determined applicable
       {
         text: 'Tokens',
         nextRoute: { pathname: '/tokens' as const },
         icon: tokensIcon,
         isActive: pathname.startsWith('/token'),
       },
+      */
       config.features.marketplace.isEnabled ? {
         text: 'Apps',
         nextRoute: { pathname: '/apps' as const },
         icon: appsIcon,
         isActive: pathname.startsWith('/app'),
       } : null,
+
+      /* TODO: Hidden until stats API tested
       config.features.stats.isEnabled ? {
         text: 'Charts & stats',
         nextRoute: { pathname: '/stats' as const },
         icon: statsIcon,
         isActive: pathname === '/stats',
       } : null,
+      */
+
+      /*
       apiNavItems.length > 0 && {
         text: 'API',
         icon: apiDocsIcon,
         isActive: apiNavItems.some(item => isInternalItem(item) && item.isActive),
         subItems: apiNavItems,
       },
+      */
+
       config.UI.sidebar.otherLinks.length > 0 ? {
         text: 'Other',
         icon: gearIcon,

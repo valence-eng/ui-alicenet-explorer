@@ -11,7 +11,7 @@ import typography from './foundations/typography';
 import zIndices from './foundations/zIndices';
 import global from './global';
 
-const overrides = {
+const overridesBase = {
   ...typography,
   ...borders,
   colors,
@@ -26,4 +26,21 @@ const overrides = {
   semanticTokens,
 };
 
-export default extendTheme(overrides);
+// Additional Alice Overrides ( Old Alice -- MUI Provider ) -- TODO Extract as lib or extend chakra UI theme
+const aliceThemeBase = ({
+  palette: {
+    mode: 'dark',
+    extra: {
+      modalBgDark: '#293240',
+      modalBgDark50: '#29324050',
+      modalBgDark2: '#202734',
+    },
+  },
+});
+
+const composedOverrides = {
+  ...overridesBase,
+  ...aliceThemeBase,
+};
+
+export default extendTheme(composedOverrides);
