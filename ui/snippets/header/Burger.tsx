@@ -46,7 +46,7 @@ const Burger = () => {
           <DrawerBody p={ 6 } display="flex" flexDirection="column">
             { config.chain.isTestnet && <Icon as={ testnetIcon } h="14px" w="auto" color="red.400" alignSelf="flex-start"/> }
             <Flex alignItems="center" justifyContent="space-between">
-              <NetworkLogo onClick={ handleNetworkLogoClick }/>
+              <NetworkLogo isHamburger={ true } onClick={ handleNetworkLogoClick }/>
               { config.UI.sidebar.featuredNetworks ? (
                 <NetworkMenuButton
                   isMobile

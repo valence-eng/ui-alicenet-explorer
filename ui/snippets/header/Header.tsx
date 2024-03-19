@@ -34,6 +34,7 @@ const Header = ({ isHomePage, renderSearchBar }: Props) => {
           bgColor={ bgColor }
           width="100%"
           alignItems="center"
+          justifyItems="center"
           justifyContent="space-between"
           zIndex="sticky2"
           transitionProperty="box-shadow"
@@ -41,7 +42,7 @@ const Header = ({ isHomePage, renderSearchBar }: Props) => {
           boxShadow={ scrollDirection === 'down' ? 'md' : 'none' }
         >
           <Burger/>
-          <NetworkLogo/>
+          <NetworkLogo inHeader/>
           { config.features.account.isEnabled ? <ProfileMenuMobile/> : <Box boxSize={ 10 }/> }
         </Flex>
         { !isHomePage && (
