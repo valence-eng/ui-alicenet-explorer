@@ -10,6 +10,8 @@ import logoPlaceholder from 'icons/networks/logo-placeholder.svg';
 interface Props {
   isCollapsed?: boolean;
   onClick?: (event: React.SyntheticEvent) => void;
+  isHamburger?: boolean;
+  inHeader?: boolean;
 }
 
 const LogoFallback = ({ isCollapsed, isSmall }: { isCollapsed?: boolean; isSmall?: boolean }) => {
@@ -41,7 +43,7 @@ const LogoFallback = ({ isCollapsed, isSmall }: { isCollapsed?: boolean; isSmall
   );
 };
 
-const NetworkLogo = ({ isCollapsed, onClick }: Props) => {
+const NetworkLogo = ({ isCollapsed, onClick, isHamburger = false, inHeader = false }: Props) => {
 
   const logoSrc = useColorModeValue(config.UI.sidebar.logo.default, config.UI.sidebar.logo.dark || config.UI.sidebar.logo.default);
   const iconSrc = useColorModeValue(config.UI.sidebar.icon.default, config.UI.sidebar.icon.dark || config.UI.sidebar.icon.default);
@@ -52,7 +54,7 @@ const NetworkLogo = ({ isCollapsed, onClick }: Props) => {
   return (
     // TODO switch to <NextLink href={ href } passHref> when main page for network will be ready
     <Box
-      mt="8"
+      mt={ inHeader ? '2' : '8' }
       as="a"
       href={ route({ pathname: '/' }) }
       width={{ base: 'auto', lg: isCollapsed === false ? '120px' : '30px', xl: isCollapsed ? '30px' : '120px' }}
@@ -64,8 +66,9 @@ const NetworkLogo = ({ isCollapsed, onClick }: Props) => {
     >
       { /* big logo */ }
       <Image
-        w="100%"
-        h="auto"
+        w="auto"
+        // eslint-disable-next-line no-nested-ternary
+        h={ inHeader ? '100%' : isHamburger ? '100%' : 'auto' }
         src={ logoSrc }
         alt={ `${ config.chain.name } network logo` }
         fallback={ <LogoFallback isCollapsed={ isCollapsed }/> }
@@ -75,7 +78,7 @@ const NetworkLogo = ({ isCollapsed, onClick }: Props) => {
       { /* small logo */ }
       <Image
         w="100%"
-        h="auto%"
+        h="auto"
         mt="3px"
         src={ iconSrc }
         alt={ `${ config.chain.name } network logo` }
